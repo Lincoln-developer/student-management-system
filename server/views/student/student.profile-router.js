@@ -1,6 +1,7 @@
 import express from "express";
 import studentProfileCreation from "../../controllers/accounts/student-profile.post.js";
 import getStudentProfile from "../../controllers/accounts/student-profile.get.js";
+import studentProfileUpdate from "../../controllers/accounts/student_profile.update.js";
 
 const router = express.Router();
 
@@ -20,10 +21,9 @@ router.get("/", () => {
 
 //Get method to get a specific student profile using an id
 router.get("/:profile_id", getStudentProfile);
+
 //patch method to update student profile
-router.patch("/", () => {
-    console.log("update student profile");
-});
+router.patch("/:student_id", studentProfileUpdate);
 
 //Delete method to delete existing student profile
 router.delete("/", () => {
