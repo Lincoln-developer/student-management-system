@@ -6,12 +6,13 @@ const app = express()
 //Middlewares
 app.use(express.json());
 app.use(cors());
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({extended:true}));
+app.use('/uploads', express.static("upload"));
 
 //Handling app routes
 import student_account_route_handler from "./views/student/student_account_router.js";
 import student_login_route_handler from "./views/student/student_login_route.js";
-import studentProfileRouteHandler from "./views/student/student.profile-router.js"
+import studentProfileRouteHandler from "./views/student/student.profile-router.js";
 
 
 

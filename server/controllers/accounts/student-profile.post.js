@@ -3,11 +3,12 @@ import studentProfile from "../../models/student.profile.js";
 const studentProfileCreation = (req, res) => {
 
     //Obtaining student profile fields
-    const {surname, lastname, course, faculty, yearOfStudy} = req.body;
+    const {image= req.file.path,surname, lastname, course, faculty, yearOfStudy} = req.body;
 
     //Creating an instance of a new student profile created
-    const newStudentProfile = studentProfile.create({surname, lastname, course, faculty, yearOfStudy})
-
+    const newStudentProfile = studentProfile.create(
+        {image,surname, lastname, course, faculty, yearOfStudy}
+    )
     .then(profile => {
 
         res.status(200).json({
@@ -15,7 +16,7 @@ const studentProfileCreation = (req, res) => {
             profile_status:"profile created successfully",
 
             student:{
-                id:profile._id,
+                image:profile.image,
                 surname:profile.surname,
                 lastname:profile.lastname,
                 course:profile.course,

@@ -5,10 +5,10 @@ const studentProfileUpdate = async(req, res) => {
     try {
         //creating an instance of a student
         const id = req.params.student_id;
-        const {surname,lastname,course,faculty,yearOfStudy} = req.body;
+        const {image= req.file.path,surname,lastname,course,faculty,yearOfStudy} = req.body;
         const student = await studentProfile.findByIdAndUpdate(
             {_id:id},
-            {surname, lastname, course, faculty, yearOfStudy}
+            {image,surname, lastname, course, faculty, yearOfStudy}
         )
         .then(newProfile => {
             return res.status(200).json({

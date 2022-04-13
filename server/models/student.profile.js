@@ -4,6 +4,10 @@ const schema = Mongoose.Schema;
 
 //Structuring student profile creation
 const studentProfileSchema = new schema({
+    image:{
+        type:String,
+        required:true
+    },
     surname:{
         type:String,
         required:true
